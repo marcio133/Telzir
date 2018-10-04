@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>DDD de Origem</label>
+      <select class="form-control" formControlName="origin">
+        <option [value]="null" disabled>Selecione um DDD de origem</option>
+        <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label>DDD de Destino</label>
+      <select class="form-control" formControlName="destiny">
+        <option [value]="null" disabled>Selecione um DDD de destino</option>
+        <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Duração da ligação(min)</label>
+      <input type="number" class="form-control" placeholder="Duração">
+    </div>
+    <div class="form-group col-md-3">
+      <label>Plano</label>
+      <select class="form-control" formControlName="destiny">
+        <option [value]="null" disabled>Selecione um Plano</option>
+        <option *ngFor="let plan of plans" [value]="plan">{{plan}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-success">Calcular</button>
+    </div>
+  </div>
+</form>
+
