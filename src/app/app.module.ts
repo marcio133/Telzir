@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
+import { StorageService } from './_services/storage.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [CalcRateService],
+  providers: [CalcRateService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
