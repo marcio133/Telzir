@@ -3,10 +3,14 @@
   height: 97vh;
   color: $white;
   font-size: 25px;
-
+  font-family: 'FjallaOne';
+  line-height: 1.1;
   .result_primary{
-    border-left: 10px solid $white;
-    font-size: 60px;
-    padding-left: 10px;
+    border-left: 8px solid $white;
+    font-size: 85px;
+    padding-left: 15px;
+  }
+  .result_no_plan{
+    margin-top: 20px;
   }
 }

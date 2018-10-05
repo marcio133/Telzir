@@ -43,15 +43,15 @@
   </div>
   <div class="col-md-6 result">
     <div class="centralized-content">
-        <div class="result_primary" *ngIf="result">
+        <div class="result_primary" *ngIf="result != null && result != undefined">
             Com {{form.get('plan').value}}
             <br>
-            {{result | number : '1.2-2'}}
+            $ {{result | number : '1.2-2'}}
           </div>
-          <div *ngIf="resultNoPlan">
+          <div class="result_no_plan" *ngIf="resultNoPlan">
             Sem FaleMais
             <br>
-            {{resultNoPlan}}
+            $ {{resultNoPlan}}
           </div> 
     </div>
   </div>
