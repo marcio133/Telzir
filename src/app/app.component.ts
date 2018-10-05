@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   form: FormGroup;
   result: number;
   resultNoPlan: number;
+  errorMessage: string = 'null';
   constructor(private calcService: CalcRateService) { }
 
   ngOnInit(): void {
@@ -37,6 +38,8 @@ export class AppComponent implements OnInit {
     if (this.form.get('origin').value !== this.form.get('destiny').value) {
       this.result = this.calcService.calcRate(this.form.value).result;
       this.resultNoPlan = this.calcService.calcRate(this.form.value).resultNoPlan;
+    }else{
+      this.errorMessage = "Os ddds de origem e destino precisam ser diferentes."
     }
   }
 }

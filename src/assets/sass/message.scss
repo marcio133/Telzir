@@ -1,0 +1,21 @@
+.message{
+    width: 80%;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-flex;
+    color: $white;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    .message-text{
+        width: 80%;
+    }
+    .message-button{
+        text-align: right;
+        width: 20%;
+    }
+}
+
+.message-error{
+    background-color: $danger-color
+}
