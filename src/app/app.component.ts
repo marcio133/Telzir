@@ -1,7 +1,7 @@
 import { CalcRateService } from './_services/calc-rate.service';
 import { Component, OnInit } from '@angular/core';
 import { ddds, plans } from './_utils/constants';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -25,10 +25,11 @@ export class AppComponent implements OnInit {
 
   createForm() {
     this.form = new FormGroup({
-      origin: new FormControl(null),
-      destiny: new FormControl(null),
-      duration: new FormControl(),
-      plan: new FormControl()
+      origin: new FormControl(null, Validators.required),
+      destiny: new FormControl(null, Validators.required),
+      duration: new FormControl(null, Validators.compose(
+        [Validators.min(1), Validators.required])),
+      plan: new FormControl(null, Validators.required)
     });
   }
 

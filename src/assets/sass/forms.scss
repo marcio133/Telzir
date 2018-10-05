@@ -1,5 +1,7 @@
 .form-group{
-  padding: 10px 40px;
+  padding: 5px 40px;
+  min-height: 112px;
+  margin-bottom: 0;
   .form-control{
     border-radius: 3px;
     &:focus{
@@ -8,4 +10,10 @@
         border-color: $secondary-color;
     }
   }
+}
+
+.invalid-feedback{
+  display: block;
+  font-size: 75%;
+  text-align: center;
 }
