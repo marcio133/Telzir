@@ -1,2 +1,11 @@
 @import 'colors';
+@import 'fonts';
 @import 'titles';
+@import 'forms';
+@import 'result';
+@import 'buttons';
+
+body {
+    margin: 0;
+    font-family: WorkSans;
+}

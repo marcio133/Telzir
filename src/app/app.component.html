@@ -29,7 +29,7 @@
       </div>
       <div class="form-row">
         <div class="col-md-12 text-center">
-          <button type="submit" class="btn btn-success">Calcular</button>
+          <button type="submit" class="btn btn-confirm">Calcular</button>
         </div>
       </div>
       <div class="form-row">
@@ -39,15 +39,15 @@
     </form>
   </div>
   <div class="col-md-7 result">
-    <div class="result_primary" *ngIf="result" >
-        Com {{form.get('plan').value}}
-        <br>
-        {{result | number : '1.2-2'}}
+    <div class="result_primary" *ngIf="result">
+      Com {{form.get('plan').value}}
+      <br>
+      {{result | number : '1.2-2'}}
     </div>
     <div *ngIf="resultNoPlan">
-        Sem FaleMais
-        <br>
-        {{resultNoPlan}}
+      Sem FaleMais
+      <br>
+      {{resultNoPlan}}
     </div>
   </div>
 </div>
