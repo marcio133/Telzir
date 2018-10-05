@@ -1,7 +1,9 @@
 .result{
-  background-image: linear-gradient(-225deg,$primary-color,$secondary-color);  height: 97vh;
+  background-image: linear-gradient(-225deg,$primary-color,$secondary-color);
+  height: 97vh;
   color: $white;
   font-size: 25px;
+
   .result_primary{
     border-left: 10px solid $white;
     font-size: 60px;

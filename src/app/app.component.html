@@ -1,53 +1,58 @@
 <div class="row">
-  <div class="col-md-5">
-    <h1 class="title">BliiveTell</h1>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label>DDD de Origem</label>
-        <select class="form-control" formControlName="origin">
-          <option [value]="null" disabled>Selecione um DDD de origem</option>
-          <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>DDD de Destino</label>
-        <select class="form-control" formControlName="destiny">
-          <option [value]="null" disabled>Selecione um DDD de destino</option>
-          <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Duração da ligação(min)</label>
-        <input type="number" class="form-control" formControlName="duration" placeholder="Duração">
-      </div>
-      <div class="form-group">
-        <label>Plano</label>
-        <select class="form-control" formControlName="plan">
-          <option [value]="null" disabled>Selecione um Plano</option>
-          <option *ngFor="let plan of plans" [value]="plan">{{plan}}</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <div class="col-md-12 text-center">
-          <button type="submit" class="btn btn-confirm">Calcular</button>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-12 text-center">
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-7 result">
-    <div class="result_primary" *ngIf="result">
-      Com {{form.get('plan').value}}
-      <br>
-      {{result | number : '1.2-2'}}
+  <div class="col-md-3 offset-md-3">
+    <div class="centralized-content">
+        <h1 class="title">BliiveTell</h1>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>DDD de Origem</label>
+            <select class="form-control" formControlName="origin">
+              <option [value]="null" disabled>Selecione um DDD de origem</option>
+              <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>DDD de Destino</label>
+            <select class="form-control" formControlName="destiny">
+              <option [value]="null" disabled>Selecione um DDD de destino</option>
+              <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Duração da ligação(min)</label>
+            <input type="number" class="form-control" formControlName="duration" placeholder="Duração">
+          </div>
+          <div class="form-group">
+            <label>Plano</label>
+            <select class="form-control" formControlName="plan">
+              <option [value]="null" disabled>Selecione um Plano</option>
+              <option *ngFor="let plan of plans" [value]="plan">{{plan}}</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-confirm">Calcular</button>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 text-center">
+            </div>
+          </div>
+        </form>
     </div>
-    <div *ngIf="resultNoPlan">
-      Sem FaleMais
-      <br>
-      {{resultNoPlan}}
+
+  </div>
+  <div class="col-md-6 result">
+    <div class="centralized-content">
+        <div class="result_primary" *ngIf="result">
+            Com {{form.get('plan').value}}
+            <br>
+            {{result | number : '1.2-2'}}
+          </div>
+          <div *ngIf="resultNoPlan">
+            Sem FaleMais
+            <br>
+            {{resultNoPlan}}
+          </div> 
     </div>
   </div>
 </div>
