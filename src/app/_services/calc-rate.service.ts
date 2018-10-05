@@ -8,11 +8,12 @@ export class CalcRateService {
   constructor() { }
 
   calcRate(data: any) {
-    const result = (data.duration - this.plans_min[data.plan]) * this.rates[`${data.origin}-${data.destiny}`];
+    const result = ((data.duration - this.plans_min[data.plan]) * this.rates[`${data.origin}-${data.destiny}`]) * 1.1;
+    const resultNoPlan =(data.duration ) * this.rates[`${data.origin}-${data.destiny}`]
     if (result > 0) {
-      return result;
+      return {result: result, resultNoPlan: resultNoPlan};
     } else {
-      return 0;
+      return {result: 0, resultNoPlan: resultNoPlan};
     }
   }
 }

@@ -6,14 +6,14 @@ export const ddds = [
 ];
 
 export const plans = [
-  'Sem Plano',
+  // 'Sem Plano',
   'FaleMais 30',
   'FaleMais 60',
   'FaleMais 120'
 ];
 
 export const plans_min = {
-  'Sem Plano': 0,
+  // 'Sem Plano': 0,
   'FaleMais 30': 30,
   'FaleMais 60': 60,
   'FaleMais 120': 120,

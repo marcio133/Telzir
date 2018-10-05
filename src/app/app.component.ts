@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   plans = plans;
   form: FormGroup;
   result: number;
+  resultNoPlan: number;
   constructor(private calcService: CalcRateService) { }
 
   ngOnInit(): void {
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     if (this.form.get('origin').value !== this.form.get('destiny').value) {
-      this.result = this.calcService.calcRate(this.form.value);
+      this.result = this.calcService.calcRate(this.form.value).result;
+      this.resultNoPlan = this.calcService.calcRate(this.form.value).resultNoPlan;
     }
   }
 }
