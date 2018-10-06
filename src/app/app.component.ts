@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   form: FormGroup;
   result: number;
   resultNoPlan: number;
-  errorMessage: string = 'null';
+  errorMessage: string = null;
   constructor(private calcService: CalcRateService, private storageService: StorageService) { }
 
   ngOnInit(): void {
