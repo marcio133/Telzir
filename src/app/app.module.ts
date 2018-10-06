@@ -13,6 +13,7 @@ import { routes } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HistoricComponent } from './historic/historic.component';
 import { DataTableModule } from 'angular5-data-table';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DataTableModule } from 'angular5-data-table';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, {useHash: true}),
-    DataTableModule.forRoot()
+    DataTableModule.forRoot(),
+    NgxDatatableModule
   ],
   providers: [CalcRateService, StorageService],
   bootstrap: [AppComponent]
