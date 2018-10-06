@@ -1,0 +1,16 @@
+.footer {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  padding: 15px 15px;
+  width:100%;
+  color: $white;
+  background: $footer-color;
+  .footer-btn-navigation{
+    @include green-button();
+    float: right;
+    padding: 5px;
+    border-radius: 25px;
+    font-size: 11px;
+  }
+}
