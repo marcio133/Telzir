@@ -1,5 +1,5 @@
 .form-group{
-  padding: 5px 40px;
+  padding: 0px 40px;
   min-height: 112px;
   margin-bottom: 0;
   .form-control{
@@ -9,6 +9,9 @@
         box-shadow: none;
         border-color: $secondary-color;
     }
+  }
+  @media (max-height: 750px) {
+    min-height: 95px;
   }
 }
 

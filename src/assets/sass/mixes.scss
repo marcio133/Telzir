@@ -5,8 +5,10 @@
     @media (max-width: 767px) {
       position: relative;
       padding: 20px 10px;
-      margin-bottom: 50px;
     }
+    // @media (max-height: 670px) {
+    //   margin-bottom: 75px;
+    // }
 }
 
 @mixin green-button() {
