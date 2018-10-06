@@ -5,6 +5,8 @@
   font-size: 25px;
   font-family: 'FjallaOne';
   line-height: 1.1;
+  ::-moz-selection { @include white-color-selection(); }
+  ::selection { @include white-color-selection(); }
   .result_primary{
     border-left: 8px solid $white;
     font-size: 85px;
@@ -12,5 +14,11 @@
   }
   .result_no_plan{
     margin-top: 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 40px 10px;
+    margin-bottom: 50px;
+    height: inherit;
   }
 }

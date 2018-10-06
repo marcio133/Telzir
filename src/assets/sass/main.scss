@@ -8,9 +8,14 @@
 @import 'message';
 @import 'footer';
 @import 'table';
+@import 'loading';
 
 body {
     margin: 0;
-    font-family: 'NotoSans';
+    font-family: 'Roboto';
+    color: $text-color;
+    ::-moz-selection { @include green-color-selection(); }
+    ::selection { @include green-color-selection(); }
 }
+
 

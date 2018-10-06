@@ -1,6 +1,6 @@
 import { CalcRateService } from '../_services/calc-rate.service';
 import { Component, OnInit } from '@angular/core';
-import { ddds, plans } from '../_utils/constants';
+import { ddds, plans, rates } from '../_utils/constants';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StorageService } from '../_services/storage.service';
 
@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   result: number;
   resultNoPlan: number;
   errorMessage: string = null;
+  homeMessage = 'Vamos te ajudar a calcular suas despesas.';
+  rates = rates;
+  loading = false;
   constructor(private calcService: CalcRateService, private storageService: StorageService) { }
 
   ngOnInit(): void {
@@ -35,19 +38,34 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.form.get('origin').value !== this.form.get('destiny').value) {
       const resultService = this.calcService.calcRate(this.form.value);
-      this.result = Math.round(resultService.result * 100) / 100 ;
-      this.resultNoPlan = Math.round(resultService.resultNoPlan * 100) / 100;
       const data = this.form.value;
       data.date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
-      data.price = this.result;
-      data.normalPrice = this.resultNoPlan;
+      // data.price = this.result;
+      // data.normalPrice = this.resultNoPlan;
+      if (this.rates[`${this.form.get('origin').value}-${this.form.get('destiny').value}`]) {
+        data.price = Math.round(resultService.result * 100) / 100 ;
+        data.normalPrice = Math.round(resultService.resultNoPlan * 100) / 100;
+        this.result = data.price;
+        this.resultNoPlan = data.normalPrice;
+      } else {
+        this.result = undefined;
+        this.resultNoPlan = undefined;
+        data.price = undefined;
+        data.normalPrice = undefined;
+        this.homeMessage = 'Opa, parece que não podemos fazer essa consulta.';
+      }
       this.storageService.saveQuery(data).subscribe(res => {
       });
     } else {
       this.errorMessage = 'Os ddds de origem e destino precisam ser diferentes.';
     }
+    document.getElementById('result').scrollIntoView();
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   }
 
 }
