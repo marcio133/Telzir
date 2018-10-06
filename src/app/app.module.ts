@@ -11,19 +11,23 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
+import { HistoricComponent } from './historic/historic.component';
+import { DataTableModule } from 'angular5-data-table';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    HistoricComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes, {useHash: true})
+    RouterModule.forRoot(routes, {useHash: true}),
+    DataTableModule.forRoot()
   ],
   providers: [CalcRateService, StorageService],
   bootstrap: [AppComponent]

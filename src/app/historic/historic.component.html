@@ -1,0 +1,13 @@
+<h2>Histórico de consultas</h2>
+
+<div>
+  <data-table id="my-table" [title]="'Histórico'" [items]="historic" [itemCount]="historic.length" [indexColumn]="false" (reload)="getData($event)">
+    <data-table-column [property]="'date'" [header]="'Data'"></data-table-column>
+    <data-table-column [property]="'origin'" [header]="'DDD Origem'"></data-table-column>
+    <data-table-column [property]="'destiny'" [header]="'DDD Destino'"></data-table-column>
+    <data-table-column [property]="'duration'" [header]="'Duração'"></data-table-column>
+    <data-table-column [property]="'plan'" [header]="'Plano'"></data-table-column>
+    <data-table-column [property]="'price'" [header]="'Com FaleMais'"></data-table-column>
+    <data-table-column [property]="'normalPrice'" [header]="'	Sem FaleMais'"></data-table-column>
+  </data-table>
+</div>

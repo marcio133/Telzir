@@ -5,4 +5,13 @@ $button-shadow: 0 2px 25px $secondary-color;
 .btn-confirm{
   @include green-button();
   width: 80%;
+  &:focus{
+    -webkit-box-shadow: $button-shadow ;
+    box-shadow: $button-shadow ;
+    border: 1px solid $primary-color;
+  }
+  &:active{
+    -webkit-box-shadow: $button-shadow ;
+    box-shadow: $button-shadow
+  }
 }

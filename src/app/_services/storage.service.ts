@@ -6,8 +6,11 @@ export class StorageService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveQuery(data){
+  saveQuery(data) {
     return this.httpClient.post('https://bliivetell.firebaseio.com/query.json', data);
+  }
+  getHistoric() {
+    return this.httpClient.get('https://bliivetell.firebaseio.com/query.json');
   }
 
 }
