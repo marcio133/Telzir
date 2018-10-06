@@ -43,8 +43,6 @@ export class HomeComponent implements OnInit {
       const resultService = this.calcService.calcRate(this.form.value);
       const data = this.form.value;
       data.date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
-      // data.price = this.result;
-      // data.normalPrice = this.resultNoPlan;
       if (this.rates[`${this.form.get('origin').value}-${this.form.get('destiny').value}`]) {
         data.price = Math.round(resultService.result * 100) / 100 ;
         data.normalPrice = Math.round(resultService.resultNoPlan * 100) / 100;

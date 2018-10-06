@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing";
 
 import { HomeComponent } from "./home.component";
 import { BrowserModule } from "@angular/platform-browser";
@@ -8,17 +8,25 @@ import { StorageService } from "../_services/storage.service";
 import { HttpClientModule } from "@angular/common/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import { Injectable } from "@angular/core";
 
 describe("HomeComponent", () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let storageService: StorageService;
 
+  @Injectable()
+  class StubStorageService {
+      public saveQuery() {
+        return Observable.from([ 'teste' ]);
+      }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomeComponent],
       imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
-      providers: [CalcRateService, StorageService]
+      providers: [CalcRateService, { provide: StorageService, useClass: StubStorageService }]
     }).compileComponents();
   }));
 
@@ -45,7 +53,8 @@ describe("HomeComponent", () => {
     expect(component.errorMessage).toBeDefined();
   });
 
-  it("result and resultNoPlan should be defined on onSubmit when ddds are diferents", () => {
+  it("result and resultNoPlan should be defined on onSubmit when ddds are diferents", fakeAsync(() => {
+    // spyOn(storageService, 'saveQuery').and.returnValue(Observable.from([ 'teste' ]));
     component.form.patchValue({
       origin: '011',
       destiny: '016',
@@ -54,12 +63,18 @@ describe("HomeComponent", () => {
     });
 
     component.onSubmit();
+    tick(1000);
+    fixture.detectChanges();
 
-    expect(component.result).toBeDefined();
-    expect(component.resultNoPlan).toBeDefined();
-  });
 
-  it("storageService.saveQuery must be called on onSubmit when ddds are diferents", () => {
+    fixture.whenStable().then(() => {
+      expect(component.result).toBeDefined();
+      expect(component.resultNoPlan).toBeDefined();
+      expect(component.loading).toBeFalsy();
+    });
+  }));
+
+  it("storageService.saveQuery must be called on onSubmit when ddds are diferents", fakeAsync(() => {
     spyOn(storageService, 'saveQuery').and.returnValue(Observable.from([ 'teste' ]));
     component.form.patchValue({
       origin: '011',
@@ -69,7 +84,12 @@ describe("HomeComponent", () => {
     });
 
     component.onSubmit();
+    tick(1000);
+    fixture.detectChanges();
 
-    expect(storageService.saveQuery).toHaveBeenCalled();
-  });
+    fixture.whenStable().then(() => {
+      expect(storageService.saveQuery).toHaveBeenCalled();
+      expect(component.loading).toBeFalsy();
+    });
+  }));
 });
