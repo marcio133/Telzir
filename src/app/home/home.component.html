@@ -64,7 +64,7 @@
   <div class="col-md-6 col-lg-7 col-xl-7 col result" id="result">
     <div class="centralized-content">
       <div *ngIf="!loading">
-        <div class="result_primary animated fadeIn" *ngIf="result">
+        <div class="result_primary animated fadeIn" *ngIf="result != null && result !=undefined">
           Com {{form.get('plan').value}}
           <br>
           $ {{result | number : '1.2-2'}}
@@ -74,9 +74,9 @@
           <br>
           $ {{resultNoPlan}}
         </div>
-      </div>
-      <div class="result_message animated fadeIn" *ngIf="!result && !loading">
-        {{homeMessage}}
+        <div class="result_message animated fadeIn" *ngIf="result == null && result == undefined && !loading">
+            {{homeMessage}}
+          </div>
       </div>
       <div *ngIf="loading">
         <div class="load-wrapp  animated fadeIn">
