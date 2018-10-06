@@ -1,3 +1,16 @@
-.data-table-wrapper {
+.table {
   margin-bottom: 65px;
+  thead {
+    th {
+      background-color: #1bb68c;
+      color: #fff;
+      font-family: 'Roboto-Light';
+      border: none;
+    }
+  }
+  td {
+    border: none;
+  }
 }
+
+
