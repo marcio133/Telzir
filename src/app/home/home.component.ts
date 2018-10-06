@@ -37,9 +37,13 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     if (this.form.get('origin').value !== this.form.get('destiny').value) {
       const resultService = this.calcService.calcRate(this.form.value);
-      this.result = resultService.result;
-      this.resultNoPlan = resultService.resultNoPlan;
-      this.storageService.saveQuery(this.form.value).subscribe(res=>{
+      this.result = Math.round(resultService.result * 100) / 100 ;
+      this.resultNoPlan = Math.round(resultService.resultNoPlan * 100) / 100;
+      const data = this.form.value;
+      data.date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
+      data.price = this.result;
+      data.normalPrice = this.resultNoPlan;
+      this.storageService.saveQuery(data).subscribe(res => {
         console.log(res);
       });
     } else {
