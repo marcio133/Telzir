@@ -1,5 +1,5 @@
 <div>
-  <data-table id="my-table" [title]="'Histórico de Consultas'" [items]="historic" [itemCount]="historic.length" [indexColumn]="false" (reload)="getData($event)">
+  <data-table id="my-table" [title]="'Histórico de Consultas'" [items]="historic" [itemCount]="historic.length" [indexColumn]="false" (reload)="getData()">
     <data-table-column [property]="'date'" [header]="'Data'"></data-table-column>
     <data-table-column [property]="'origin'" [header]="'DDD Origem'"></data-table-column>
     <data-table-column [property]="'destiny'" [header]="'DDD Destino'"></data-table-column>
