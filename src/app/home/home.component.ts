@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
       data.price = this.result;
       data.normalPrice = this.resultNoPlan;
       this.storageService.saveQuery(data).subscribe(res => {
-        console.log(res);
       });
     } else {
       this.errorMessage = 'Os ddds de origem e destino precisam ser diferentes.';
