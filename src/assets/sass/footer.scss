@@ -6,11 +6,20 @@
   width:100%;
   color: $white;
   background: $footer-color;
+  font-family: 'Roboto-Light';
+  font-size: 14px;
+  line-height: 2;
   .footer-btn-navigation{
     @include green-button();
     float: right;
     padding: 5px;
     border-radius: 25px;
     font-size: 11px;
+    @media (max-width: 620px) {
+      float: none;
+    }
+  }
+  @media (max-width: 620px) {
+    text-align: center;
   }
 }

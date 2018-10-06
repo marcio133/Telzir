@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4 col-xl-3 col-md-6 offset-lg-2 offset-xl-3">
+  <div class="col-lg-4 col-xl-3 col-md-6 offset-lg-1 offset-xl-2">
     <div class="centralized-content">
       <h1 class="title">BliiveTell</h1>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -61,7 +61,7 @@
     </div>
 
   </div>
-  <div class="col-md-6 result" id="result">
+  <div class="col-md-6 col-lg-7 col-xl-7 col result" id="result">
     <div class="centralized-content">
       <div *ngIf="!loading">
         <div class="result_primary" *ngIf="result">
@@ -75,7 +75,7 @@
           $ {{resultNoPlan}}
         </div>
       </div>
-      <div class="result_primary" *ngIf="!result && !loading">
+      <div class="result_message" *ngIf="!result && !loading">
         {{homeMessage}}
       </div>
       <div *ngIf="loading">
