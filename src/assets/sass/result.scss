@@ -1,0 +1,29 @@
+.result{
+  background-image: linear-gradient(-225deg,$primary-color,$secondary-color);
+  height: 97vh;
+  color: $white;
+  font-size: 25px;
+  font-family: 'FjallaOne';
+  line-height: 1.1;
+  ::-moz-selection { @include white-color-selection(); }
+  ::selection { @include white-color-selection(); }
+  .result_primary{
+    border-left: 8px solid $white;
+    font-size: 85px;
+    padding-left: 15px;
+  }
+  .result_message{
+    border-left: 8px solid $white;
+    font-size: 55px;
+    padding-left: 15px;
+  }
+  .result_no_plan{
+    margin-top: 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 40px 10px;
+    margin-bottom: 50px;
+    height: inherit;
+  }
+}

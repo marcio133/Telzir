@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-lg-4 col-xl-3 col-md-6 offset-lg-1 offset-xl-2">
+    <div class="centralized-content">
+      <h1 class="title">BliiveTell</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>DDD de Origem</label>
+          <select class="form-control" formControlName="origin">
+            <option [value]="null" disabled>Selecione um DDD de origem</option>
+            <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+          </select>
+          <div class="invalid-feedback" [hidden]="!(!form.controls['origin'].valid && form.controls['origin'].touched)">É
+            preciso informar um DDD de origem</div>
+        </div>
+        <div class="form-group">
+          <label>DDD de Destino</label>
+          <select class="form-control" formControlName="destiny">
+            <option [value]="null" disabled>Selecione um DDD de destino</option>
+            <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
+          </select>
+          <div class="invalid-feedback" [hidden]="!(!form.controls['destiny'].valid && form.controls['destiny'].touched)">É
+            preciso informar um DDD de destino</div>
+        </div>
+        <div class="form-group">
+          <label>Duração da ligação(min)</label>
+          <input type="number" class="form-control" min="0" formControlName="duration" placeholder="Duração">
+          <div class="invalid-feedback" [hidden]="!(!form.controls['duration'].valid && form.controls['duration'].touched)">A
+            duração precisa ser maior que zero</div>
+        </div>
+        <div class="form-group">
+          <label>Plano</label>
+          <select class="form-control" formControlName="plan">
+            <option [value]="null" disabled>Selecione um Plano</option>
+            <option *ngFor="let plan of plans" [value]="plan">{{plan}}</option>
+          </select>
+          <div class="invalid-feedback" [hidden]="!(!form.controls['plan'].valid && form.controls['plan'].touched)">É
+            necessário selecionar um plano</div>
+        </div>
+        <div class="form-row" *ngIf="errorMessage">
+          <div class="col-md-12 text-center">
+            <div class="message message-error" role="alert">
+              <div class="message-text">
+                {{errorMessage}}
+              </div>
+              <button type="button" class="message-button" (click)="errorMessage=null">
+                <i class="fa fa-times message-button-icon" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-confirm" [disabled]="!form.valid">Calcular</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 text-center">
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="col-md-6 col-lg-7 col-xl-7 col result" id="result">
+    <div class="centralized-content">
+      <div *ngIf="!loading">
+        <div class="result_primary animated fadeIn" *ngIf="result != null && result !=undefined">
+          Com {{form.get('plan').value}}
+          <br>
+          $ {{result | number : '1.2-2'}}
+        </div>
+        <div class="result_no_plan animated fadeIn" *ngIf="resultNoPlan">
+          Sem FaleMais
+          <br>
+          $ {{resultNoPlan}}
+        </div>
+        <div class="result_message animated fadeIn" *ngIf="result == null && result == undefined && !loading">
+            {{homeMessage}}
+          </div>
+      </div>
+      <div *ngIf="loading">
+        <div class="load-wrapp  animated fadeIn">
+          <!-- Loading 4 don't work on firefox because of the border-radius and the "dashed" style. -->
+          <div class="load">
+            <p class="load-message">Aguarde um instante</p>
+            <div class="ring-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noResult>
+</ng-template>

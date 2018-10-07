@@ -1,0 +1,27 @@
+.form-group{
+  padding: 0px 40px;
+  min-height: 112px;
+  margin-bottom: 0;
+  .form-control{
+    border-radius: 3px;
+    &:focus{
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: $secondary-color;
+    }
+  }
+  @media (max-height: 750px) {
+    min-height: 95px;
+  }
+}
+
+.invalid-feedback{
+  display: block;
+  font-size: 75%;
+  text-align: center;
+}
+
+option:hover {
+  color: #444645;
+  background: red !important;
+  }
