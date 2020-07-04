@@ -1,21 +1,24 @@
-@import 'colors';
-@import 'fonts';
-@import 'mixes';
-@import 'titles';
-@import 'forms';
-@import 'result';
-@import 'buttons';
-@import 'message';
-@import 'footer';
-@import 'table';
-@import 'loading';
+@import "colors";
+@import "fonts";
+@import "mixes";
+@import "titles";
+@import "forms";
+@import "result";
+@import "buttons";
+@import "message";
+@import "table";
+@import "loading";
 
 body {
-    margin: 0;
-    font-family: 'Roboto';
-    color: $text-color;
-    ::-moz-selection { @include green-color-selection(); }
-    ::selection { @include green-color-selection(); }
+  margin: 0;
+  font-family: "Roboto";
+  color: $text-color;
+
+  ::-moz-selection {
+    @include green-color-selection();
+  }
+
+  ::selection {
+    @include green-color-selection();
+  }
 }
-
-

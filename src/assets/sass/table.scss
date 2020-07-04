@@ -1,16 +1,16 @@
 .table {
   margin-bottom: 65px;
+
   thead {
     th {
       background-color: $primary-color;
-      color: #fff;
-      font-family: 'Roboto-Light';
       border: none;
+      color: #fff;
+      font-family: "Roboto-Light";
     }
   }
+
   td {
     border: none;
   }
 }
-
-

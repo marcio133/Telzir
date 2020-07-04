@@ -1,14 +1,12 @@
-.centralized-content{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    @media (max-width: 767px) {
-      position: relative;
-      padding: 20px 10px;
-    }
-    // @media (max-height: 670px) {
-    //   margin-bottom: 75px;
-    // }
+.centralized-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media (max-width: 767px) {
+    position: relative;
+    padding: 20px 10px;
+  }
 }
 
 @mixin green-button() {
@@ -18,8 +16,8 @@
 }
 
 @mixin green-color-selection() {
-    color: $white;
-    background-color: $secondary-color;
+  color: $white;
+  background-color: $secondary-color;
 }
 
 @mixin white-color-selection() {

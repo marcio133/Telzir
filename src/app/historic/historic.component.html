@@ -1,31 +1,29 @@
 <h1>Histórico de Consultas</h1>
 <div class="row">
   <div class="col-md-12 table-responsive">
-    <table class="table">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Data</th>
-            <th scope="col">Origem</th>
-            <th scope="col">Destino</th>
-            <th scope="col">Duração</th>
-            <th scope="col">Plano</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Preço sem Plano</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of historic">
-            <td>{{item.date}}</td>
-            <td>{{item.origin}}</td>
-            <td>{{item.destiny}}</td>
-            <td>{{item.duration}}</td>
-            <td>{{item.plan}}</td>
-            <td>$ {{item.price || '--'}}</td>
-            <td>$ {{item.normalPrice || '--'}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Origem</th>
+          <th scope="col">Destino</th>
+          <th scope="col">Duração</th>
+          <th scope="col">Plano</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Preço sem Plano</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of historic">
+          <td>{{item.date}}</td>
+          <td>{{item.origin}}</td>
+          <td>{{item.destiny}}</td>
+          <td>{{item.duration}}</td>
+          <td>{{item.plan}}</td>
+          <td>$ {{item.price || '--'}}</td>
+          <td>$ {{item.normalPrice || '--'}}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

@@ -1,24 +1,30 @@
-.footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
+@import '../../assets/sass/colors';
+@import '../../assets/sass/mixes';
+
+:host {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
   padding: 15px 15px;
-  width:100%;
+  width: 100%;
   color: $white;
   background: $footer-color;
-  font-family: 'Roboto-Light';
+  font-family: "Roboto-Light";
   font-size: 14px;
   line-height: 2;
-  .footer-btn-navigation{
+
+  button {
     @include green-button();
     float: right;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 25px;
     font-size: 11px;
+
     @media (max-width: 620px) {
       float: none;
     }
   }
+
   @media (max-width: 620px) {
     text-align: center;
   }
