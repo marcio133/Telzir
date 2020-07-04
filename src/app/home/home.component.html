@@ -9,8 +9,12 @@
             <option [value]="null" disabled>Selecione um DDD de origem</option>
             <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
           </select>
-          <div class="invalid-feedback" [hidden]="!(!form.controls['origin'].valid && form.controls['origin'].touched)">É
-            preciso informar um DDD de origem</div>
+          <div
+            class="invalid-feedback"
+            [hidden]="!(!form.controls['origin'].valid && form.controls['origin'].touched)"
+          >
+            É preciso informar um DDD de origem
+          </div>
         </div>
         <div class="form-group">
           <label>DDD de Destino</label>
@@ -18,14 +22,22 @@
             <option [value]="null" disabled>Selecione um DDD de destino</option>
             <option *ngFor="let ddd of ddds" [value]="ddd">{{ddd}}</option>
           </select>
-          <div class="invalid-feedback" [hidden]="!(!form.controls['destiny'].valid && form.controls['destiny'].touched)">É
-            preciso informar um DDD de destino</div>
+          <div
+            class="invalid-feedback"
+            [hidden]="!(!form.controls['destiny'].valid && form.controls['destiny'].touched)"
+          >
+            É preciso informar um DDD de destino
+          </div>
         </div>
         <div class="form-group">
           <label>Duração da ligação(min)</label>
           <input type="number" class="form-control" min="0" formControlName="duration" placeholder="Duração">
-          <div class="invalid-feedback" [hidden]="!(!form.controls['duration'].valid && form.controls['duration'].touched)">A
-            duração precisa ser maior que zero</div>
+          <div
+            class="invalid-feedback"
+            [hidden]="!(!form.controls['duration'].valid && form.controls['duration'].touched)"
+          >
+            A duração precisa ser maior que zero
+          </div>
         </div>
         <div class="form-group">
           <label>Plano</label>
@@ -33,8 +45,12 @@
             <option [value]="null" disabled>Selecione um Plano</option>
             <option *ngFor="let plan of plans" [value]="plan">{{plan}}</option>
           </select>
-          <div class="invalid-feedback" [hidden]="!(!form.controls['plan'].valid && form.controls['plan'].touched)">É
-            necessário selecionar um plano</div>
+          <div
+            class="invalid-feedback"
+            [hidden]="!(!form.controls['plan'].valid && form.controls['plan'].touched)"
+          >
+            É necessário selecionar um plano
+          </div>
         </div>
         <div class="form-row" *ngIf="errorMessage">
           <div class="col-md-12 text-center">
@@ -59,11 +75,11 @@
         </div>
       </form>
     </div>
-
   </div>
+
   <div class="col-md-6 col-lg-7 col-xl-7 col result" id="result">
     <div class="centralized-content">
-      <div *ngIf="!loading">
+      <div *ngIf="!isLoading">
         <div class="result_primary animated fadeIn" *ngIf="result != null && result !=undefined">
           Com {{form.get('plan').value}}
           <br>
@@ -72,16 +88,13 @@
         <div class="result_no_plan animated fadeIn" *ngIf="resultNoPlan">
           Sem FaleMais
           <br>
-          $ {{resultNoPlan}}
+          $ {{resultNoPlan | number : '1.2-2'}}
         </div>
-        <div class="result_message animated fadeIn" *ngIf="result == null && result == undefined && !loading">
+        <div class="result_message animated fadeIn" *ngIf="result == null && result == undefined && !isLoading">
             {{homeMessage}}
           </div>
       </div>
-      <app-loading *ngIf="loading"></app-loading>
+      <app-loading *ngIf="isLoading"></app-loading>
     </div>
   </div>
 </div>
-
-<ng-template #noResult>
-</ng-template>

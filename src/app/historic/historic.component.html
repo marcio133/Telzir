@@ -20,8 +20,8 @@
           <td>{{item.destiny}}</td>
           <td>{{item.duration}}</td>
           <td>{{item.plan}}</td>
-          <td>$ {{item.price || '--'}}</td>
-          <td>$ {{item.normalPrice || '--'}}</td>
+          <td>$ {{item.result || 0 | number : '1.2-2'}}</td>
+          <td>$ {{item.resultNoPlan || 0 | number : '1.2-2'}}</td>
         </tr>
       </tbody>
     </table>

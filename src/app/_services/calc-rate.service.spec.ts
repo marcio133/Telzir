@@ -1,11 +1,24 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CalcRateService } from './calc-rate.service';
+import { StorageService } from './storage.service';
+import { of } from 'rxjs/observable/of';
 
 describe('CalcRateService', () => {
+  let storageServiceStub;
+
   beforeEach(() => {
+    storageServiceStub = {
+      saveQuery: jasmine.createSpy().and.returnValue(of(null)),
+    };
+
+
+
     TestBed.configureTestingModule({
-      providers: [CalcRateService]
+      providers: [
+        CalcRateService,
+        { provide: StorageService, useValue: storageServiceStub },
+      ]
     });
   });
 
