@@ -78,15 +78,7 @@
             {{homeMessage}}
           </div>
       </div>
-      <div *ngIf="loading">
-        <div class="load-wrapp  animated fadeIn">
-          <!-- Loading 4 don't work on firefox because of the border-radius and the "dashed" style. -->
-          <div class="load">
-            <p class="load-message">Aguarde um instante</p>
-            <div class="ring-1"></div>
-          </div>
-        </div>
-      </div>
+      <app-loading *ngIf="loading"></app-loading>
     </div>
   </div>
 </div>

@@ -1,0 +1,10 @@
+.centralized-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media (max-width: 767px) {
+    position: relative;
+    padding: 20px 10px;
+  }
+}
