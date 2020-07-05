@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
         this.setResult(result, resultNoPlan);
       } else {
         this.setResult();
-        this.homeMessage = 'Opa, parece que não podemos fazer essa consulta.';
+        this.homeMessage = 'Opa, ainda não temos essa rota disponível.';
       }
       setTimeout(() => {
         this.isLoading = false;
