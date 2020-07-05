@@ -18,12 +18,10 @@ export class HomeComponent implements OnInit {
   errorMessage: string = null;
   homeMessage = 'Vamos te ajudar a calcular suas despesas.';
   rates = rates;
-  loading = false;
+  isLoading = false;
   constructor(private calcService: CalcRateService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    // Add 'implements OnInit' to the class.
     this.createForm();
   }
 
@@ -38,32 +36,29 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = true;
-    if (this.form.get('origin').value !== this.form.get('destiny').value) {
-      const resultService = this.calcService.calcRate(this.form.value);
-      const data = this.form.value;
-      data.date = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString();
-      if (this.rates[`${this.form.get('origin').value}-${this.form.get('destiny').value}`]) {
-        data.price = Math.round(resultService.result * 100) / 100 ;
-        data.normalPrice = Math.round(resultService.resultNoPlan * 100) / 100;
-        this.result = data.price;
-        this.resultNoPlan = data.normalPrice;
+    const { origin, destiny } = this.form.value;
+    if (origin !== destiny) {
+      this.errorMessage = null;
+      this.isLoading = true;
+      const { result, resultNoPlan } = this.calcService.calcRate(this.form.value);
+      if (this.rates[`${origin}-${destiny}`]) {
+        this.setResult(result, resultNoPlan);
       } else {
-        this.result = undefined;
-        this.resultNoPlan = undefined;
-        data.price = undefined;
-        data.normalPrice = undefined;
+        this.setResult();
         this.homeMessage = 'Opa, parece que não podemos fazer essa consulta.';
       }
-      this.storageService.saveQuery(data).subscribe(res => {
-      });
+      setTimeout(() => {
+        this.isLoading = false;
+        document.getElementById('result').scrollIntoView();
+      }, 1000);
     } else {
       this.errorMessage = 'Os ddds de origem e destino precisam ser diferentes.';
     }
-    document.getElementById('result').scrollIntoView();
-    setTimeout(() => {
-      this.loading = false;
-    }, 1000);
+  }
+
+  setResult(result: number = null, resultNoPlan: number = null) {
+    this.result = result;
+    this.resultNoPlan = resultNoPlan;
   }
 
 }

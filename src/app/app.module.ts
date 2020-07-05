@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HistoricComponent } from './historic/historic.component';
 import { DataTableModule } from 'angular5-data-table';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HistoricComponent
+    HistoricComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

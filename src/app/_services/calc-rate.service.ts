@@ -1,19 +1,42 @@
 import { Injectable } from '@angular/core';
 import { plans_min, rates } from '../_utils/constants';
+import { StorageService } from './storage.service';
+import { Call, Simulation } from '../_utils/models';
 
 @Injectable()
 export class CalcRateService {
   plans_min = plans_min;
   rates = rates;
-  constructor() { }
+  constructor( private storageService: StorageService) {}
 
-  calcRate(data: any) {
-    const result = ((data.duration - this.plans_min[data.plan]) * this.rates[`${data.origin}-${data.destiny}`]) * 1.1;
-    const resultNoPlan =(data.duration ) * this.rates[`${data.origin}-${data.destiny}`]
-    if (result > 0) {
-      return {result: result, resultNoPlan: resultNoPlan};
-    } else {
-      return {result: 0, resultNoPlan: resultNoPlan};
-    }
+  calcRate(call: Call): Simulation {
+    const result =
+      (call.duration - this.plans_min[call.plan]) *
+      this.rates[`${call.origin}-${call.destiny}`] *
+      1.1;
+
+    const resultNoPlan = call.duration * this.rates[`${call.origin}-${call.destiny}`];
+    const simulation = {
+      result: this.round(result > 0 ? result : 0),
+      resultNoPlan: this.round(resultNoPlan)
+    };
+    this.saveResult(simulation, call);
+
+    return simulation;
+  }
+
+  saveResult(simulation: Simulation, call: Call): void {
+    const date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+    const request = {
+      ...simulation,
+      ...call,
+      date
+    };
+    this.storageService.saveQuery(request).subscribe(() => {
+    });
+  }
+
+  round(value: number) {
+    return Math.round(value * 100) / 100 ;
   }
 }
