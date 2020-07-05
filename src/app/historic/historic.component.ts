@@ -20,7 +20,6 @@ export class HistoricComponent implements OnInit {
       const temporaryHistoric = [];
       Object.keys(res).forEach(key => temporaryHistoric.push(res[key]));
       this.historic = temporaryHistoric;
-      console.log(this.historic);
     });
   }
 }

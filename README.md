@@ -16,7 +16,7 @@ Run `npm run e2e` to execute the end-to-end tests using protractor. A chrome win
 
 ## Live Demo
 
-A live demo of this project can be found in `bliivetell-frontend.firebaseapp.com`.
+A live demo of this project can be found in `https://telzir-96ad7.firebaseapp.com/`.
 
 ## Further help
 
