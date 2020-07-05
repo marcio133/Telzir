@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isLoading = true;
     const { origin, destiny } = this.form.value;
     if (origin !== destiny) {
+      this.errorMessage = null;
+      this.isLoading = true;
       const { result, resultNoPlan } = this.calcService.calcRate(this.form.value);
       if (this.rates[`${origin}-${destiny}`]) {
         this.setResult(result, resultNoPlan);
@@ -53,7 +54,6 @@ export class HomeComponent implements OnInit {
     } else {
       this.errorMessage = 'Os ddds de origem e destino precisam ser diferentes.';
     }
-
   }
 
   setResult(result: number = null, resultNoPlan: number = null) {
