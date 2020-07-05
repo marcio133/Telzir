@@ -1,4 +1,4 @@
-# BliiveTel
+# Telzir
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8, npm version 3.10.10 and node version 6.11.3.
 
@@ -10,7 +10,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). Karma will open a browser window. After that click on the DEBUG button and it will open a new tab with the tests results. The project has unit tests for its most complex componets: HomeComponent, HistoricComponent and CalcRateService.
 
-##Live Demo
+## Running e2e tests
+
+Run `npm run e2e` to execute the end-to-end tests using protractor. A chrome window will open where the tests will run.
+
+## Live Demo
 
 A live demo of this project can be found in `bliivetell-frontend.firebaseapp.com`.
 
