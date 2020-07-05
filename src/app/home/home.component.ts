@@ -39,11 +39,9 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     const { origin, destiny } = this.form.value;
     if (origin !== destiny) {
-      const resultService = this.calcService.calcRate(this.form.value);
+      const { result, resultNoPlan } = this.calcService.calcRate(this.form.value);
       if (this.rates[`${origin}-${destiny}`]) {
-        const price = Math.round(resultService.result * 100) / 100 ;
-        const normalPrice = Math.round(resultService.resultNoPlan * 100) / 100;
-        this.setResult(price, normalPrice);
+        this.setResult(result, resultNoPlan);
       } else {
         this.setResult();
         this.homeMessage = 'Opa, parece que não podemos fazer essa consulta.';

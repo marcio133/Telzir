@@ -17,8 +17,8 @@ export class CalcRateService {
 
     const resultNoPlan = call.duration * this.rates[`${call.origin}-${call.destiny}`];
     const simulation = {
-      result: result > 0 ? result : 0,
-      resultNoPlan
+      result: this.round(result > 0 ? result : 0),
+      resultNoPlan: this.round(resultNoPlan)
     };
     this.saveResult(simulation, call);
 
@@ -34,5 +34,9 @@ export class CalcRateService {
     };
     this.storageService.saveQuery(request).subscribe(() => {
     });
+  }
+
+  round(value: number) {
+    return Math.round(value * 100) / 100 ;
   }
 }
